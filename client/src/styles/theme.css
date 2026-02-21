@@ -1,0 +1,249 @@
+:root {
+  /* Windows 11 Metro Color Palette */
+  --primary: #0078d4;
+  --primary-dark: #005a9e;
+  --secondary: #10893e;
+  --accent: #ffb900;
+  --background: #f3f3f3;
+  --surface: #ffffff;
+  --text-primary: #2b2b2b;
+  --text-secondary: #666666;
+  --border: #e0e0e0;
+  --error: #e81123;
+  --success: #107c10;
+  --warning: #ff8c00;
+  
+  /* Tile colors (Metro style) */
+  --tile-blue: #0078d7;
+  --tile-green: #00b294;
+  --tile-purple: #881798;
+  --tile-orange: #ff8c00;
+  --tile-red: #e81123;
+  --tile-teal: #00b7c3;
+  --tile-pink: #e3008c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--background);
+  color: var(--text-primary);
+}
+
+/* Metro Tile Styles */
+.metro-tile {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.metro-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary);
+}
+
+.metro-tile.colored {
+  color: white;
+}
+
+.metro-tile.blue { background: var(--tile-blue); }
+.metro-tile.green { background: var(--tile-green); }
+.metro-tile.purple { background: var(--tile-purple); }
+.metro-tile.orange { background: var(--tile-orange); }
+.metro-tile.red { background: var(--tile-red); }
+.metro-tile.teal { background: var(--tile-teal); }
+
+/* Metro Grid Layout */
+.metro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Navigation Bar */
+.nav-bar {
+  background: var(--surface);
+  padding: 12px 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-brand {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.nav-menu {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-item {
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.nav-item:hover {
+  background: var(--background);
+}
+
+.nav-item.active {
+  background: var(--primary);
+  color: white;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn-secondary:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* Forms */
+.form-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  background: var(--surface);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* Flip Tiles (for Metro UI effect) */
+.flip-tile-container {
+  perspective: 1000px;
+  height: 200px;
+}
+
+.flip-tile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.flip-tile-container:hover .flip-tile {
+  transform: rotateY(180deg);
+}
+
+.flip-tile-front, .flip-tile-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flip-tile-front {
+  background: var(--tile-blue);
+  color: white;
+}
+
+.flip-tile-back {
+  background: var(--surface);
+  transform: rotateY(180deg);
+  border: 2px solid var(--primary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .metro-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .nav-menu {
+    display: none;
+  }
+  
+  .nav-menu.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
